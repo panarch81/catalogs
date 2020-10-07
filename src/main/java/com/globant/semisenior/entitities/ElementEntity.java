@@ -1,6 +1,7 @@
 package com.globant.semisenior.entitities;
 
 import java.io.Serializable;
+import java.util.List;
 import javax.persistence.Access;
 import javax.persistence.AccessType;
 import javax.persistence.Column;
@@ -9,6 +10,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import lombok.AllArgsConstructor;
@@ -17,8 +19,8 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-@Entity
-@Table(name = "element")
+@Entity(name = "Element")
+@Table(name = "ELEMENT")
 @Getter
 @Setter
 @AllArgsConstructor
@@ -37,7 +39,10 @@ public class ElementEntity implements Serializable {
   @Column(name = "nombre")
   private String nombre;
 
-  @Column(name = "parent_id")
-  private String parentId;
+  @ManyToOne
+  private ElementEntity parent;
+
+  @OneToMany(mappedBy = "parent")
+  private List<ElementEntity> components;
 
 }
