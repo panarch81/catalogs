@@ -1,11 +1,12 @@
 package com.globant.semisenior.entitities;
 
-import java.io.Serializable;
 import java.util.List;
 import javax.persistence.Access;
 import javax.persistence.AccessType;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -19,16 +20,15 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-@Entity(name = "Element")
-@Table(name = "ELEMENT")
+@Entity(name = "Country")
+@Table(name = "COUNTRY")
 @Getter
 @Setter
 @AllArgsConstructor
 @Builder
 @NoArgsConstructor
-public class ElementEntity{
-
-  private static final long serialVersionUID = 1718410130951726308L;
+public class CountryEntity {
+  private static final long serialVersionUID = -9025461685430951577L;
 
   @Id
   @Column(name = "id")
@@ -39,13 +39,10 @@ public class ElementEntity{
   @Column(name = "name")
   private String name;
 
-  @ManyToOne
-  private ElementEntity parent;
+  @OneToMany(mappedBy = "country", cascade = {CascadeType.ALL})
+  private List<CityEntity> cities;
 
   @ManyToOne
-  private CategoryEntity category;
-
-  @OneToMany(mappedBy = "parent")
-  private List<ElementEntity> components;
+  private ContinentEntity continent;
 
 }

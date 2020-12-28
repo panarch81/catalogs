@@ -1,7 +1,5 @@
 package com.globant.semisenior.entitities;
 
-import java.io.Serializable;
-import java.util.List;
 import javax.persistence.Access;
 import javax.persistence.AccessType;
 import javax.persistence.Column;
@@ -11,7 +9,6 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -19,16 +16,15 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-@Entity(name = "Element")
-@Table(name = "ELEMENT")
+@Entity(name = "City")
+@Table(name = "CITY")
 @Getter
 @Setter
 @AllArgsConstructor
 @Builder
 @NoArgsConstructor
-public class ElementEntity{
-
-  private static final long serialVersionUID = 1718410130951726308L;
+public class CityEntity {
+  private static final long serialVersionUID = 2651361770157059453L;
 
   @Id
   @Column(name = "id")
@@ -40,12 +36,5 @@ public class ElementEntity{
   private String name;
 
   @ManyToOne
-  private ElementEntity parent;
-
-  @ManyToOne
-  private CategoryEntity category;
-
-  @OneToMany(mappedBy = "parent")
-  private List<ElementEntity> components;
-
+  private CountryEntity country;
 }

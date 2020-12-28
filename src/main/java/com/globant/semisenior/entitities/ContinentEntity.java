@@ -1,16 +1,14 @@
 package com.globant.semisenior.entitities;
 
-import java.io.Serializable;
 import java.util.List;
 import javax.persistence.Access;
 import javax.persistence.AccessType;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import lombok.AllArgsConstructor;
@@ -19,16 +17,15 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-@Entity(name = "Element")
-@Table(name = "ELEMENT")
+@Entity(name = "Continent")
+@Table(name = "CONTINENT")
 @Getter
 @Setter
 @AllArgsConstructor
 @Builder
 @NoArgsConstructor
-public class ElementEntity{
-
-  private static final long serialVersionUID = 1718410130951726308L;
+public class ContinentEntity {
+  private static final long serialVersionUID = -4899287672005321303L;
 
   @Id
   @Column(name = "id")
@@ -39,13 +36,6 @@ public class ElementEntity{
   @Column(name = "name")
   private String name;
 
-  @ManyToOne
-  private ElementEntity parent;
-
-  @ManyToOne
-  private CategoryEntity category;
-
-  @OneToMany(mappedBy = "parent")
-  private List<ElementEntity> components;
-
+  @OneToMany(mappedBy = "continent", cascade = {CascadeType.ALL})
+  private List<CountryEntity> countries;
 }
