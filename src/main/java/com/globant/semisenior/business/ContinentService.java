@@ -1,7 +1,6 @@
 package com.globant.semisenior.business;
 
 import com.globant.semisenior.rest.controller.DTO.ContinentDTO;
-import org.springframework.http.ResponseEntity;
 
 public interface ContinentService {
 
@@ -9,4 +8,5 @@ public interface ContinentService {
 
   ContinentDTO getContinent(Long idContinent);
 
+  ContinentDTO update(ContinentDTO continentDTO);
 }

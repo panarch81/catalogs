@@ -7,4 +7,5 @@ import org.springframework.data.jpa.repository.JpaRepository;
 public interface ContinentRepo extends JpaRepository<ContinentEntity, Long> {
 
   Optional<ContinentEntity> findByName(String name);
+  Optional<ContinentEntity> findById(Long name);
 }

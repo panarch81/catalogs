@@ -24,5 +24,10 @@ public class ContinentController implements ContinentOperations {
     return ResponseEntity.ok(continentService.getContinent(continentId));
   }
 
+  @Override
+  public ResponseEntity<ContinentDTO> updateContinent(ContinentDTO continent) {
+    return ResponseEntity.ok(continentService.update(continent));
+  }
+
 
 }
